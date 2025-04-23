@@ -1,0 +1,843 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* text boxes (default style) */
+
+.textBox {
+  /* style */
+  font-family: arial;
+  font-size: 17px;
+  line-height: 25px;
+  color: white;
+  background-color: black;
+  box-shadow: 0px 0px 20px black;
+  /* positioning */
+  margin: auto;
+  width: 40vw;
+  padding: 35px;
+  /* ! set top margin in html */
+}
+
+.textBoxHidden {
+  /* style */
+  font-family: arial;
+  font-size: 17px;
+  line-height: 25px;
+  color: white;
+  background-color: black;
+  box-shadow: 0px 0px 20px black;
+  /* positioning */
+  margin: auto;
+  width: 40vw;
+  padding: 35px;
+  /* ! set top margin in html */
+  visibility: hidden;
+}
+
+
+/* navigation arrows (between text boxes) */
+
+.navArrow {
+  width: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: black;
+  box-shadow: 0px 0px 20px black;
+  /* clips top of box shadow off */
+  clip-path: inset(0px -20px -20px -20px);
+  position: relative;
+  left: 30%;
+  cursor: pointer;
+  visibility: hidden;
+  /* add bottom margin to the last button inline */
+}
+
+/* extra class if there is more than one nav button */
+.navArrowContainer {
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  width: 40vw;
+}
+
+#button1.navArrow {
+  visibility: visible;
+  /* navArrow class is hidden by default, this make the first one on the page visible */
+}
+
+.navArrow:hover {
+  background: rgb(249, 80, 207);
+}
+
+.navArrow img {
+  width: 20px;
+  object-fit: contain;
+}
+
+/* styling for ONLY the first arrow button */
+
+#button1.navArrow1 {
+  width: 20px;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: black;
+  box-shadow: 0px 0px 20px black;
+  /* clips top of box shadow off */
+  clip-path: inset(0px -20px -20px -20px);
+  position: relative;
+  left: 30%;
+  cursor: pointer;
+  visibility: visible;
+}
+
+#button1 img {
+  width: 20px;
+}
+
+#button1:hover {
+  background: rgb(249, 80, 207);
+}
+
+
+@keyframes moveArrowDown {
+  from {translate: 0px -2px;}
+  to {translate: 0px 2px;}
+}
+
+#button1.navArrow1 img {
+  animation: moveArrowDown 0.5s ease-in-out infinite alternate;
+}
+
+
+
+/* ~~~~~~~~~~ P1 (ONOMICHI) ~~~~~~~~~~ */
+
+body.p1 {
+  background-image: url(assets/onomichi.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+/* specify color of text boxes and nav arrows 
+(#button1 needs to be done separately because the default visibility of the navArrow class is 'hidden' */
+
+.p1 .textBox {
+  background-color: rgb(138, 76, 0);
+  color: white;
+  border: solid 2px rgb(67, 37, 0);
+}
+
+.p1 .textBoxHidden {
+  background-color: rgb(138, 76, 0);
+  color: white;
+  border: solid 2px rgb(67, 37, 0);
+}
+
+.p1 .navArrow {
+  background-color: rgb(138, 76, 0);
+  color: white;
+  border: solid 2px rgb(67, 37, 0);
+  border-top: none;
+}
+
+.p1 .navArrow:hover {
+  background-color: rgb(249, 80, 207);
+}
+
+.p1 #button1.navArrow1 {
+  background-color: rgb(138, 76, 0);
+  color: white;
+  border: solid 2px rgb(67, 37, 0);
+  border-top: none;
+}
+
+.p1 #button1.navArrow1:hover {
+  visibility: visible;
+  background-color: rgb(249, 80, 207);
+}
+
+.p1 .navArrowContainer #button3.navArrow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  left: 0%;
+  width: 125px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-family: arial;
+  font-size: 15px;
+  color: white;
+}
+
+.p1 .navArrowContainer #button4.navArrow {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  left: 0%;
+  width: 240px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-family: arial;
+  font-size: 15px;
+  color: white;
+}
+
+#hoverHere {
+  position: absolute;
+  z-index: 1;
+  top: 15vh;
+  left: 80px;
+}
+
+#hoverHereText {
+  position: absolute;
+  visibility: hidden;
+  top: 10vh;
+  left: 400px;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  /* text style */
+  font-family: arial;
+  font-size: 17px;
+  line-height: 23px;
+  color: white;
+  /* box style */
+  border-radius: 15px;
+  background: rgba(255, 220, 104, 0.85);
+  text-shadow: 0px 0px 15px rgb(255, 200, 82),
+    0px 0px 15px rgb(255, 200, 82),
+    0px 0px 10px rgb(252, 237, 121),
+    0px 0px 10px rgba(255, 234, 71, 0.807),
+    0px 0px 3px rgb(134, 41, 255);
+  box-shadow: 0px 0px 50px rgb(255, 220, 104), 
+    0px 0px 25px rgb(255, 220, 104);
+}
+
+.glowHoverHere {
+  animation: glowHere 1s ease-in-out infinite alternate;
+  }
+
+@keyframes glowHere {
+  from {
+    filter: drop-shadow(0px 0px 15px rgb(255, 210, 104))
+    drop-shadow(0px 0px 35px rgb(255, 210, 104))
+  }
+  to {
+    filter: drop-shadow(0px 0px 25px rgb(255, 210, 104))
+    drop-shadow(0px 0px 25px rgb(255, 210, 104))
+    drop-shadow(0px 0px 30px rgb(255, 208, 0))
+  }
+}
+
+#yearInReviewImg {
+  visibility: hidden;
+  width: 18vw;
+  position: absolute;
+  top: 10vh;
+  right: 5vw;
+  box-shadow: 0px 0px 50px rgb(0, 213, 36), 
+  0px 0px 25px rgb(0, 213, 36);
+}
+
+#yirTextBox {
+  visibility: hidden;
+  position: absolute;
+  top: 6vh;
+  right: 30vw;
+  width: 310px;
+  font-family: arial;
+  font-size: 17px;
+  line-height: 23px;
+  padding: 20px;
+  color: white;
+  border-radius: 15px;
+  background-color: rgba(0, 213, 36, 0.846);
+  text-shadow: 0px 0px 10px rgb(0, 117, 20);
+  box-shadow: 0px 0px 50px rgb(0, 213, 36), 
+  0px 0px 25px rgb(0, 213, 36);
+}
+
+#yirHours {
+  color: rgb(131, 236, 228);
+}
+
+#yirHours:hover {
+  background: rgb(131, 236, 228);
+  color: black;
+}
+
+#welcomeMatSpan {
+  color: rgb(131, 236, 228);
+}
+
+#welcomeMatSpan:hover {
+  color: black;
+  background-color: rgb(131, 236, 228);
+}
+
+#welcomeMat{
+  visibility: hidden;
+  position: fixed;
+  width: 20%;
+  right: 10vw;
+  bottom: 50px;
+}
+
+#welcomeMat img {
+  max-width: 100%
+}
+
+
+
+/* ~~~~~~~~~~ P1.1 (SKIP BRANCH) ~~~~~~~~~~ */
+
+body.pSkip {
+  background: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.kiryuPunchText {
+  margin: auto;
+  padding: 40px;
+  color: white;
+  font-family: arial;
+  font-size: 20px;
+}
+
+#kiryuPunchGifRow {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#wrongGoBack {
+  margin: auto;
+  margin-top: 50px;
+  padding: 15px;
+  color: white;
+  font-family: arial;
+  font-size: 25px;
+  /* box style */
+  border-color: black;
+  border-radius: 15px;
+  border-style: outset;
+  background: rgba(176, 27, 27, 0.70);
+  text-shadow: 0px 0px 15px rgb(227, 32, 32),
+    0px 0px 15px rgb(227, 32, 32),
+    0px 0px 10px rgb(227, 32, 32),
+    0px 0px 10px rgb(227, 32, 32),
+    0px 0px 4px rgb(201, 19, 19);
+  cursor: pointer;
+}
+
+#wrongGoBack:hover {
+  background-color: rgba(160, 22, 22, 0.6);
+}
+
+.wrongGif {
+  width: 20vw;
+  animation: wrongGlow 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes wrongGlow {
+  from {
+    filter: drop-shadow(0px 0px 25px rgb(255, 0, 0))
+    drop-shadow(0px 0px 45px rgb(255, 0, 0))
+  }
+  to {
+    filter: drop-shadow(0px 0px 45px rgb(255, 0, 0))
+    drop-shadow(0px 0px 45px rgb(255, 0, 0))
+    drop-shadow(0px 0px 72px rgb(255, 0, 0))
+    drop-shadow(0px 0px 72px rgb(255, 0, 0))
+  }
+}
+
+
+
+/* ~~~~~~~~~~ P2 (WELCOME TO KAMUROCHO) ~~~~~~~~~~ */
+
+body.p2 {
+  background-image: url(assets/kamurocho_street_night.jpg);
+  background-size: 100%;
+}
+
+
+/* hidden text boxes */
+
+#secretText {
+  font-family: arial;
+  font-size: 17px;
+  line-height: 22px;
+  background: white;
+  color: black;
+  position: absolute;
+  top: 5%;
+  right: 15%;
+  width: 450px;
+  padding: 10px;
+  visibility: hidden;
+}
+
+#yakuzaTextBox {
+  /* text style */
+  font-family: arial;
+  font-size: 17px;
+  line-height: 23px;
+  color: white;
+  /* box style */
+  border-radius: 15px;
+  background: rgba(255, 163, 227, 0.88);
+  text-shadow: 0px 0px 15px rgba(255, 163, 227),
+    0px 0px 15px rgba(255, 163, 227),
+    0px 0px 10px rgb(255, 136, 219),
+    0px 0px 10px rgb(255, 136, 219),
+    0px 0px 4px rgb(255, 94, 207);
+  box-shadow: 0px 0px 50px rgb(255, 163, 227), 
+    0px 0px 25px rgb(255, 160, 230);
+  /* position */
+  position: absolute;
+  z-index: 1;
+  top: 20%;
+  left: 15%;
+  width: 500px;
+  padding: 15px;
+  padding-left: 30px;
+  padding-right: 30px;
+  visibility: hidden;
+}
+
+/* muscly men text hover, inverts colors and changes the background (in the js) */
+
+#muscle:hover {
+  background: pink;
+  color: black;
+}
+
+#muscle {
+  color:pink
+}
+
+/* Yakuza/Like a Dragon title hover, inverts colors */
+
+#yakuzaSpan:hover {
+  background: pink;
+  color: black;
+}
+
+#yakuzaSpan {
+  color:pink;
+}
+
+/* glowing sign */
+
+#glowingSign {
+  position: absolute;
+  top: 15vh;
+  right: 0%;
+}
+
+#glowingSign:hover {
+  position: absolute;
+  top: 15vh;
+  right: 0%;
+}
+
+.glowImg {
+  animation: glow 1s ease-in-out infinite alternate;
+  }
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0px 0px 15px rgb(255, 230, 0))
+    drop-shadow(0px 0px 35px rgb(255, 230, 0))
+  }
+  to {
+    filter: drop-shadow(0px 0px 35px rgb(255, 230, 0))
+    drop-shadow(0px 0px 62px rgb(255, 230, 0))
+    drop-shadow(0px 0px 62px rgb(255, 230, 0))
+  }
+}
+
+/* ichi kiryu hidden image */
+
+#ichiKiryu {
+  visibility: hidden;
+  position: absolute;
+  top: 30%; left: 30%;
+  height: 50%;
+  z-index: 1;
+}
+
+/* navigation buttons */
+
+#p2Button2 img {
+  width: 20px;
+  margin-top: 5px;
+}
+
+#p2Button2 {
+  position: absolute;
+  visibility: hidden;
+  width: 20px;
+  top: 620px;
+  left: 50%;
+  padding: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: black;
+  border-color: white;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 20px black;
+  margin-bottom: 25vh;
+  cursor: pointer;
+}
+
+#p2Button2:hover {
+  background: rgb(249, 80, 207);
+}
+
+
+#kabukichoButton {
+  /* text style */
+  font-family: arial;
+  font-size: 15px;
+  color: white;
+  /* box style */
+  border-color: black;
+  border-radius: 15px;
+  border-style: outset;
+  background: rgba(176, 27, 27, 0.70);
+  text-shadow: 0px 0px 15px rgb(227, 32, 32),
+    0px 0px 15px rgb(227, 32, 32),
+    0px 0px 10px rgb(227, 32, 32),
+    0px 0px 10px rgb(227, 32, 32),
+    0px 0px 4px rgb(201, 19, 19);
+  /* position */
+  position: absolute;
+  top: 52%;
+  left: 46%;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  cursor: pointer;
+  visibility: hidden;
+}
+
+#kabukichoButton:hover {
+  background-color: rgba(140, 22, 22, 0.6);
+}
+
+.glowButton {
+  animation: glowButton 1s ease-in-out infinite alternate;
+  }
+
+@keyframes glowButton {
+  from {
+    filter: drop-shadow(0px 0px 10px rgb(227, 32, 32))
+    drop-shadow(0px 0px 15px rgb(227, 32, 32))
+  }
+  to {
+    filter: drop-shadow(0px 0px 50px rgb(227, 32, 32))
+    drop-shadow(0px 0px 20px rgb(227, 32, 32))
+  }
+}
+
+
+
+/* ~~~~~~~~~~ P3 ~~~~~~~~~~ */
+
+body.p3 {
+  background-image: url(assets/heatAction.gif);
+  background-position: center;
+  background-size: cover;
+}
+
+
+/* ~~~~~~~~~~ P4 ~~~~~~~~~~ */
+
+/* page 4 has it's own css file because of the slider mess */
+
+
+/* ~~~~~~~~~~ P5 ~~~~~~~~~~ */
+
+body.p5 {
+  background-image: url(assets/minigamesCollage2.jpg);
+  background-size: 100%;
+}
+
+/* specify color of text boxes and nav arrows 
+(#button1 needs to be done separately because the default visibility of the navArrow class is 'hidden' */
+
+.p5 .textBox {
+  background-color: rgb(5, 154, 89);
+  color: white;
+  border: solid 2px black;
+}
+
+.p5 .textBoxHidden {
+  background-color: rgb(0, 154, 89);
+  color: white;
+  border: solid 2px black;
+}
+
+.p5 .navArrow {
+  background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none;
+}
+
+.p5 .navArrow:hover {
+  background-color: rgb(249, 80, 207);
+}
+
+.p5 #button1.navArrow {
+  background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none;
+}
+
+.p5 #button1.navArrow:hover {
+  background-color: rgb(249, 80, 207);
+}
+
+
+/* gifs */
+
+#tableTennisGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#tableTennisGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 16vh;
+  left: 2vw;
+}
+
+#pocketCircuitGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#pocketCircuitGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 30vh;
+  right: 3vw;
+}
+
+#liveChatGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#liveChatGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 140vh;
+  right: 2vw;
+}
+
+#crazyDeliveryGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#crazyDeliveryGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 79vh;
+  left: 13vw;
+}
+
+#chickenRacingGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#chickenRacingGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 125vh;
+  left: 35vw;
+}
+
+#likeAButterflyGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#likeAButterflyGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 75vh;
+  right: 15vw;
+}
+
+#telephoneClubGif img {
+  max-width: 100%;
+  border: solid 2px black;
+}
+
+#telephoneClubGif {
+  z-index: -1;
+  position: absolute;
+  width: 22%;
+  top: 165vh;
+  left: 8vw;
+}
+
+
+/* ~~~~~~~~~~ P6 ~~~~~~~~~~ */
+
+body.p6 {
+  background-image: url(assets/cabaretClubFloor.gif);
+  background-size: cover;
+}
+
+/* specify color of text boxes and nav arrows 
+(#button1 needs to be done separately because the default visibility of the navArrow class is 'hidden') */
+
+.p6 .textBox {
+  /* background-color: rgb(5, 154, 89);
+  color: white;
+  border: solid 2px black; */
+}
+
+.p6 .textBoxHidden {
+  /* background-color: rgb(0, 154, 89);
+  color: white;
+  border: solid 2px black; */
+}
+
+.p6 .navArrow {
+  /* background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none; */
+}
+
+.p6 .navArrow:hover {
+  /* background-color: rgb(249, 80, 207); */
+}
+
+.p6 #button1.navArrow {
+  visibility: visible;
+  /* background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none; */
+}
+
+.p6 #button1.navArrow:hover {
+  background-color: rgb(249, 80, 207);
+}
+
+
+
+
+
+/* ~~~~~~~~~~ P7 ~~~~~~~~~~ */
+
+body.p7 {
+  /* background-image: url(assets/cabaretClubFloor.gif); */
+  background-size: cover;
+}
+
+/* specify color of text boxes and nav arrows 
+(#button1 needs to be done separately because the default visibility of the navArrow class is 'hidden') */
+
+.p7 .textBox {
+  /* background-color: rgb(5, 154, 89);
+  color: white;
+  border: solid 2px black; */
+}
+
+.p7 .textBoxHidden {
+  /* background-color: rgb(0, 154, 89);
+  color: white;
+  border: solid 2px black; */
+}
+
+.p7 .navArrow {
+  /* background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none; */
+}
+
+.p7 .navArrow:hover {
+  /* background-color: rgb(249, 80, 207); */
+}
+
+.p7 #button1.navArrow {
+  visibility: visible;
+  /* background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none; */
+}
+
+.p7 #button1.navArrow:hover {
+  background-color: rgb(249, 80, 207);
+}
+
+
+
+
+
+/* ~~~~~~~~~~ P8 ~~~~~~~~~~ */
+
+body.p8 {
+  /* background-image: url(assets/jstorScreenshot\ copy.jpg); */
+  background-size: cover;
+}
+
+/* specify color of text boxes and nav arrows 
+(#button1 needs to be done separately because the default visibility of the navArrow class is 'hidden' */
+
+.p8 .textBox {
+  /* background-color: rgb(5, 154, 89);
+  color: white;
+  border: solid 2px black; */
+}
+
+.p8 .textBoxHidden {
+  /* background-color: rgb(0, 154, 89);
+  color: white;
+  border: solid 2px black; */
+}
+
+.p8 .navArrow {
+  /* background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none; */
+}
+
+.p8 .navArrow:hover {
+  /* background-color: rgb(249, 80, 207); */
+}
+
+.p8 #button1.navArrow {
+  visibility: visible;
+  /* background-color: rgb(0, 154, 89);
+  border: solid 2px black;
+  border-top: none; */
+}
+
+.p8 #button1.navArrow:hover {
+  background-color: rgb(249, 80, 207);
+}
+
+/* banner across the bottom of the page */
